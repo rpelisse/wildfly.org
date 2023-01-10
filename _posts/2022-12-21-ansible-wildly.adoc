@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deploy an WildFly using Ansible!"
-date:   2022-12-21
+date:   2023-01-10
 tags:   ansible cluster
 author: rpelisse
 description: A quick overview on how to use the Ansible collection for WildFly to automate a cluster deployment
