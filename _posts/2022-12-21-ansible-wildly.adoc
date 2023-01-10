@@ -134,6 +134,274 @@ Now, let’s run our Ansible playbook and observe its output:
 [source, bash]
 ----
 $ ansible-playbook -i inventory playbook.yml
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [wildfly_install : Validating arguments against arg spec 'main'] **********
+ok: [localhost]
+
+TASK [wildfly_install : Ensures prerequirements are fullfilled.] ***************
+included: /work/roles/wildfly_install/tasks/prereqs.yml for localhost
+
+TASK [wildfly_install : Check that required packages list has been provided.] ***
+ok: [localhost]
+
+TASK [wildfly_install : Prepare packages list] *********************************
+skipping: [localhost]
+
+TASK [wildfly_install : Add JDK package java-11-openjdk-headless to packages list] ***
+ok: [localhost]
+
+TASK [wildfly_install : Install required packages (4)] *************************
+changed: [localhost]
+
+TASK [wildfly_install : Ensures required local user exists.] *******************
+included: /work/roles/wildfly_install/tasks/user.yml for localhost
+
+TASK [wildfly_install : Check arguments] ***************************************
+ok: [localhost]
+
+TASK [wildfly_install : Set wildfly group] *************************************
+ok: [localhost]
+
+TASK [wildfly_install : Ensure group wildfly exists.] **************************
+changed: [localhost]
+
+TASK [wildfly_install : Ensure user wildfly exists.] ***************************
+changed: [localhost]
+
+TASK [wildfly_install : Ensure workdir /opt/wildfly/ exists.] ******************
+changed: [localhost]
+
+TASK [wildfly_install : Ensure archive_dir /opt/wildfly/ exists.] **************
+ok: [localhost]
+
+TASK [wildfly_install : Ensure server is installed] ****************************
+included: /work/roles/wildfly_install/tasks/install.yml for localhost
+
+TASK [wildfly_install : Check arguments] ***************************************
+ok: [localhost]
+
+TASK [wildfly_install : Check local download archive path] *********************
+ok: [localhost]
+
+TASK [wildfly_install : Set download paths] ************************************
+ok: [localhost]
+
+TASK [wildfly_install : Check target archive: /opt/wildfly//wildfly-27.0.0.Final.zip] ***
+ok: [localhost]
+
+TASK [wildfly_install : Retrieve archive from website: https://github.com/wildfly/wildfly/releases/download] ***
+included: /work/roles/wildfly_install/tasks/install/web.yml for localhost
+
+TASK [wildfly_install : Check arguments] ***************************************
+ok: [localhost]
+
+TASK [wildfly_install : Download zipfile from https://github.com/wildfly/wildfly/releases/download/27.0.0.Final/wildfly-27.0.0.Final.zip into /work/wildfly-27.0.0.Final.zip] ***
+ok: [localhost]
+
+TASK [wildfly_install : Retrieve archive from RHN] *****************************
+skipping: [localhost]
+
+TASK [wildfly_install : Install server using RPM] ******************************
+skipping: [localhost]
+
+TASK [wildfly_install : Check downloaded archive] ******************************
+ok: [localhost]
+
+TASK [wildfly_install : Copy archive to target nodes] **************************
+changed: [localhost]
+
+TASK [wildfly_install : Check target archive: /opt/wildfly//wildfly-27.0.0.Final.zip] ***
+ok: [localhost]
+
+TASK [wildfly_install : Read target directory information: /opt/wildfly/wildfly-27.0.0.Final/] ***
+ok: [localhost]
+
+TASK [wildfly_install : Check target directory state: /opt/wildfly/wildfly-27.0.0.Final/] ***
+ok: [localhost]
+
+TASK [wildfly_install : Extract files from /opt/wildfly//wildfly-27.0.0.Final.zip into /opt/wildfly/.] ***
+changed: [localhost]
+
+TASK [wildfly_install : Note: decompression was not executed] ******************
+skipping: [localhost]
+
+TASK [wildfly_install : Read information on server home directory: /opt/wildfly/wildfly-27.0.0.Final/] ***
+ok: [localhost]
+
+TASK [wildfly_install : Check state of server home directory: /opt/wildfly/wildfly-27.0.0.Final/] ***
+ok: [localhost]
+
+TASK [wildfly_install : Set instance name] *************************************
+ok: [localhost]
+
+TASK [wildfly_install : Deploy configuration] **********************************
+changed: [localhost]
+
+TASK [wildfly_install : Ensure required parameters for cumulative patch application are provided.] ***
+skipping: [localhost]
+
+TASK [Apply latest cumulative patch] *******************************************
+skipping: [localhost]
+
+TASK [wildfly_install : Ensure required parameters for elytron adapter are provided.] ***
+skipping: [localhost]
+
+TASK [Install elytron adapter] *************************************************
+skipping: [localhost]
+
+TASK [wildfly_install : Check wildfly install directory state] *****************
+ok: [localhost]
+
+TASK [wildfly_install : Validate conditions] ***********************************
+ok: [localhost]
+
+TASK [wildfly_systemd : Validating arguments against arg spec 'main'] **********
+ok: [localhost]
+
+TASK [wildfly_systemd : Check arguments] ***************************************
+ok: [localhost]
+
+TASK [wildfly_systemd : Check current EAP patch installed] *********************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Check arguments for yaml configuration] ****************
+skipping: [localhost]
+
+TASK [Ensure required local user and group exists.] ****************************
+
+TASK [wildfly_install : Check arguments] ***************************************
+ok: [localhost]
+
+TASK [wildfly_install : Set wildfly group] *************************************
+ok: [localhost]
+
+TASK [wildfly_install : Ensure group wildfly exists.] **************************
+ok: [localhost]
+
+TASK [wildfly_install : Ensure user wildfly exists.] ***************************
+ok: [localhost]
+
+TASK [wildfly_systemd : Set destination directory for configuration] ***********
+ok: [localhost]
+
+TASK [wildfly_systemd : Set instance destination directory for configuration] ***
+ok: [localhost]
+
+TASK [wildfly_systemd : Check arguments] ***************************************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Set base directory for instance] ***********************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Check arguments] ***************************************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Set instance name] *************************************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Set instance name] *************************************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Set bind address] **************************************
+ok: [localhost]
+
+TASK [wildfly_systemd : Create basedir /opt/wildfly/wildfly-27.0.0.Final//standalone for instance: wildfly] ***
+ok: [localhost]
+
+TASK [wildfly_systemd : Create deployment directories for instance: wildfly] ***
+ok: [localhost]
+
+TASK [wildfly_systemd : Deploy configuration] **********************************
+ok: [localhost]
+
+TASK [wildfly_systemd : Include YAML configuration extension] ******************
+skipping: [localhost]
+
+TASK [wildfly_systemd : Check YAML configuration is disabled] ******************
+ok: [localhost]
+
+TASK [wildfly_systemd : Set systemd envfile destination] ***********************
+ok: [localhost]
+
+TASK [wildfly_systemd : Determine JAVA_HOME for selected JVM RPM] **************
+ok: [localhost]
+
+TASK [wildfly_systemd : Set systemd unit file destination] *********************
+ok: [localhost]
+
+TASK [wildfly_systemd : Deploy service instance configuration: /etc//wildfly.conf] ***
+changed: [localhost]
+
+TASK [wildfly_systemd : Deploy Systemd configuration for service: /usr/lib/systemd/system/wildfly.service] ***
+changed: [localhost]
+
+TASK [wildfly_systemd : Perform daemon-reload to ensure the changes are picked up] ***
+ok: [localhost]
+
+TASK [wildfly_systemd : Ensure service is started] *****************************
+included: /work/roles/wildfly_systemd/tasks/service.yml for localhost
+
+TASK [wildfly_systemd : Check arguments] ***************************************
+ok: [localhost]
+
+TASK [wildfly_systemd : Set instance wildfly state to started] *****************
+changed: [localhost]
+
+TASK [wildfly_driver : Validating arguments against arg spec 'main'] ***********
+ok: [localhost]
+
+TASK [wildfly_driver : Check arguments] ****************************************
+ok: [localhost]
+
+TASK [wildfly_driver : Check module directory: /opt/wildfly/wildfly-27.0.0.Final//modules/org/postgresql/main] ***
+ok: [localhost]
+
+TASK [wildfly_driver : Set up module dir for JDBC Driver: /opt/wildfly/wildfly-27.0.0.Final//modules/org/postgresql/main] ***
+changed: [localhost]
+
+TASK [wildfly_driver : Retrieve JDBC Driver from https://repo.maven.apache.org/maven2/org/postgresql/postgresql/9.4.1212/postgresql-9.4.1212.jar] ***
+changed: [localhost]
+
+TASK [wildfly_driver : Set source template path] *******************************
+ok: [localhost]
+
+TASK [wildfly_driver : Deploy module.xml for JDBC Driver] **********************
+changed: [localhost]
+
+TASK [wildfly_utils : Validating arguments against arg spec 'main'] ************
+ok: [localhost]
+
+TASK [Install second driver with wildfly_driver role] **************************
+
+TASK [wildfly_driver : Validating arguments against arg spec 'main'] ***********
+ok: [localhost]
+
+TASK [wildfly_driver : Check arguments] ****************************************
+ok: [localhost]
+
+TASK [wildfly_driver : Check module directory: /opt/wildfly/wildfly-27.0.0.Final//modules/org/mariadb/main] ***
+ok: [localhost]
+
+TASK [wildfly_driver : Set up module dir for JDBC Driver: /opt/wildfly/wildfly-27.0.0.Final//modules/org/mariadb/main] ***
+changed: [localhost]
+
+TASK [wildfly_driver : Retrieve JDBC Driver from https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.7.4/mariadb-java-client-2.7.4.jar] ***
+changed: [localhost]
+
+TASK [wildfly_driver : Set source template path] *******************************
+ok: [localhost]
+
+TASK [wildfly_driver : Deploy module.xml for JDBC Driver] **********************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=70   changed=16   unreachable=0    failed=0    skipped=16   rescued=0    ignored=0
+
+
 ----
 
 Note that the playbook is not that long, but it does a lot for us. It performs almost 100 different tasks! Starting by automatically installs the dependencies, including the JVM required by WildFly, along with downloading its binaries. And the wildfly_systemd role sets does even more, effortlessly setting up three distinct services, each with its own set of ports and directory layout to store instance-specific data.
